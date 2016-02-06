@@ -34,7 +34,7 @@
 		<property name="hbm2ddl.auto">update</property>
 
 		<!-- Mapping of entities -->
-		<!-- <mapping class="br.com.leo.agenda.domain.Contato" /> -->
+		<mapping class="br.com.leo.agenda.entity.Contato" />
 		
 
 	</session-factory>
