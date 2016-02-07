@@ -13,13 +13,13 @@ public class Contato {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "id", nullable = false, unique = true)
 	private Integer id;
-	@Column(name = "nome", length = 30, nullable = true)
+	@Column(name = "nome", length = 100, nullable = true)
 	private String nome;
-	@Column(name = "telefone", length = 15, nullable = true)
+	@Column(name = "telefone", length = 13, nullable = true)
 	private Integer telefone;
-	@Column(name = "email", length = 60, nullable = true)
+	@Column(name = "email", length = 100, nullable = true)
 	private String email;
-	@Column(name = "senha_wifi", length = 30, nullable = true)
+	@Column(name = "senha_wifi", length = 16, nullable = true)
 	private String senhaWifi;
 	
 	public Integer getId(){
