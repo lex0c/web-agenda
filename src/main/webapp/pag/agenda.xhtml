@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://xmlns.jcp.org/jsf/html" 
     xmlns:p="http://primefaces.org/ui"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <h:outputStylesheet library="css" name="config.css"/>
@@ -11,19 +12,36 @@
 </h:head>
 <h:body>
 <ui:include src="/include/dialog/add.xhtml"/>
+<ui:include src="/include/dialog/confirm_dialog.xhtml"/>
+<p:growl id="status" showDetail="true" life="5000"/>
+<h:form id="formTable">
 
-<h:form>
+    <p:commandButton value="Novo Contato" actionListener="#{agendaBean.novoContato}" 
+        oncomplete="PF('addContato').show();" update=":formAdd:gridAdd" />
 
-    <p:commandButton value="Novo Contato" oncomplete="PF('addContato').show();"/>
-
-    <p:dataTable emptyMessage="Nenhum contato encontrado." 
+    <p:dataTable id="table" emptyMessage="Nenhum contato encontrado." 
         paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
-		paginator="true" rows="14">
+		paginator="true" rows="21" value="#{agendaBean.contatos}" var="column">
 		
-		<p:column headerText="Nome"></p:column>
-		<p:column headerText="Telefone"></p:column>
-		<p:column headerText="Email"></p:column>
-		<p:column headerText="Senha Wifi"></p:column>
+		<p:column headerText="Nome" sortBy="#{column.nome}" filterBy="#{column.nome}">
+		    <h:outputLabel value="#{column.nome}"/>
+		</p:column>
+		<p:column headerText="Telefone" filterBy="#{column.telefone}">
+		    <h:outputLabel value="#{column.telefone}"/>
+		</p:column>
+		<p:column headerText="Email" filterBy="#{column.email}">
+		    <h:outputLabel value="#{column.email}"/>
+	    </p:column>
+		<p:column headerText="Senha Wifi">
+		    <h:outputLabel value="#{column.senhaWifi}"/>
+		</p:column>
+		
+		<p:column headerText="Opções">
+		   <p:commandButton icon="ui-icon-trash" actionListener="#{agendaBean.delete}">
+		       <p:confirm header="Excluir Contato" message="Tem certeza que deseja excluir?" icon="ui-icon-alert" />
+		       <f:attribute name="selected" value="#{column}"/>
+		   </p:commandButton>
+		</p:column>
 		
     </p:dataTable>
 
