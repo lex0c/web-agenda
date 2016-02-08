@@ -37,20 +37,21 @@ public class AgendaBean implements Serializable {
     }
     
     public void delete(ActionEvent e){
-    	contato = (Contato) e.getComponent().getAttributes().get("selected");
-    	if(new ContadoDAO().delete(contato.getId())){
+    	getLine(e);
+    	try{
+    	    new ContadoDAO().delete(contato.getId());
     		Messages.addGlobalInfo("Contato removido com sucesso!");
-    	}else{
-    		Messages.addGlobalError("Erro ao remover contato!");
+    	    init();
+    	}catch(RuntimeException ex){
+    		Messages.addGlobalError("Erro ao remover contato!", ex.getMessage());
     	}
-    	init();
     }
     
 	public void novoContato(){
 		contato = new Contato();
 	}
     
-    public void edit(ActionEvent e){
+    public void getLine(ActionEvent e){
     	contato = (Contato) e.getComponent().getAttributes().get("selected");
     }
     

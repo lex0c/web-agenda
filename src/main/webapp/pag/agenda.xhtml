@@ -45,7 +45,7 @@
 		       <p:confirm header="Excluir Contato" icon="ui-icon-alert" message="Tem certeza que deseja excluir?" />
 		       <f:attribute name="selected" value="#{column}"/>
 		   </p:commandButton>
-		   <p:commandButton icon="ui-icon-pencil" actionListener="#{agendaBean.edit}" 
+		   <p:commandButton icon="ui-icon-pencil" actionListener="#{agendaBean.getLine}" 
 		       oncomplete="PF('mergeContato').show();" 
 		       update=":formMerge:gridMerge">
 		       <f:attribute name="selected" value="#{column}"/>
