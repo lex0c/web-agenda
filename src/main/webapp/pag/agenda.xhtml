@@ -11,13 +11,16 @@
 <title>Agenda</title>
 </h:head>
 <h:body>
+
 <ui:include src="/include/dialog/add.xhtml"/>
 <ui:include src="/include/dialog/confirm_dialog.xhtml"/>
+
 <p:growl id="status" showDetail="true" life="5000"/>
+
 <h:form id="formTable">
 
     <p:commandButton value="Novo Contato" actionListener="#{agendaBean.novoContato}" 
-        oncomplete="PF('addContato').show();" update=":formAdd:gridAdd" />
+        oncomplete="PF('mergeContato').show();" update=":formMerge:gridMerge" />
 
     <p:dataTable id="table" emptyMessage="Nenhum contato encontrado." 
         paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
@@ -39,7 +42,12 @@
 		<p:column headerText="Opções">
 		   <p:commandButton icon="ui-icon-trash" actionListener="#{agendaBean.delete}"
 		       update=":status :formTable:table">
-		       <p:confirm header="Excluir Contato" message="Tem certeza que deseja excluir?" icon="ui-icon-alert" />
+		       <p:confirm header="Excluir Contato" icon="ui-icon-alert" message="Tem certeza que deseja excluir?" />
+		       <f:attribute name="selected" value="#{column}"/>
+		   </p:commandButton>
+		   <p:commandButton icon="ui-icon-pencil" actionListener="#{agendaBean.edit}" 
+		       oncomplete="PF('mergeContato').show();" 
+		       update=":formMerge:gridMerge">
 		       <f:attribute name="selected" value="#{column}"/>
 		   </p:commandButton>
 		</p:column>

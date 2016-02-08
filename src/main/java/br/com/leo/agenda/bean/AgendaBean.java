@@ -25,19 +25,15 @@ public class AgendaBean implements Serializable {
     private void init(){
     	contatos = new ContadoDAO().listAll();
     }
-    
-	public void novoContato(){
-		contato = new Contato();
-	}
-    
-    public void save(){
-    	if(new ContadoDAO().save(contato)){
-    		Messages.addGlobalInfo("Contato adicionado com sucesso!");
-    	}else{
-    		Messages.addGlobalError("Erro ao adicionar contato!");
+     
+    public void merge(){
+    	try{
+    		new ContadoDAO().merge(contato);
+    		Messages.addGlobalInfo("Sucesso!");
+    	    init();
+    	}catch(RuntimeException e){
+    		Messages.addGlobalError("Erro!", e.getMessage());
     	}
-    	init();
-    	novoContato();
     }
     
     public void delete(ActionEvent e){
@@ -50,7 +46,13 @@ public class AgendaBean implements Serializable {
     	init();
     }
     
+	public void novoContato(){
+		contato = new Contato();
+	}
     
+    public void edit(ActionEvent e){
+    	contato = (Contato) e.getComponent().getAttributes().get("selected");
+    }
     
     
     

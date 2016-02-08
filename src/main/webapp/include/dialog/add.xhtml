@@ -9,13 +9,13 @@
 </h:head>
 <h:body>
 
-   <p:dialog header="Novo Contato" widgetVar="addContato" 
+   <p:dialog header="Novo Contato" widgetVar="mergeContato" 
        draggable="false" resizable="false" 
        modal="true" appendTo="@(body)"
        showEffect="fade" hideEffect="explode">
        
-			<h:form id="formAdd">
-				<h:panelGrid id="gridAdd" columns="2">	
+			<h:form id="formMerge">
+				<h:panelGrid id="gridMerge" columns="2">	
 					
 					<h:outputLabel value="Nome:" for="nome"/>
 					<h:inputText id="nome" value="#{agendaBean.contato.nome}" maxlength="100" size="30" />	
@@ -31,10 +31,10 @@
 					
 				</h:panelGrid>
 				<h:panelGrid columns="2">
-					<p:commandButton value="Salvar" actionListener="#{agendaBean.save}" 
-					    update=":status :formAdd:gridAdd :formTable:table" 
-					    oncomplete="PF('addContato').hide();"/>									
-					<p:commandButton value="Cancelar" onclick="PF('addContato').hide();"/>
+					<p:commandButton value="Salvar" actionListener="#{agendaBean.merge}" 
+					    update=":status :formMerge:gridMerge :formTable:table" 
+					    oncomplete="PF('mergeContato').hide();"/>									
+					<p:commandButton value="Cancelar" onclick="PF('mergeContato').hide();"/>
 				</h:panelGrid>
 			</h:form>
 		</p:dialog>
