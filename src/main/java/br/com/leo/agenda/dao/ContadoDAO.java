@@ -95,4 +95,23 @@ public class ContadoDAO {
 		}
 	}
 	
+	public boolean merge(Contato c){
+		Session session = DBConnection.getSessionFactory().openSession();
+		Transaction transaction = null;
+		try{
+			transaction = session.beginTransaction();
+			session.merge(c);
+			transaction.commit();
+			return true;
+		}catch(RuntimeException e){
+			if(transaction != null){
+				transaction.rollback();
+				return false;
+			}
+			throw e;
+		}finally{
+			session.close();
+		}
+	}
+	
 }
