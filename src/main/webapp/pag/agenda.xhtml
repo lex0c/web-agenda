@@ -32,12 +32,13 @@
 		<p:column headerText="Email" filterBy="#{column.email}">
 		    <h:outputLabel value="#{column.email}"/>
 	    </p:column>
-		<p:column headerText="Senha Wifi">
+		<p:column headerText="Senha Wifi" filterBy="#{column.senhaWifi}">
 		    <h:outputLabel value="#{column.senhaWifi}"/>
 		</p:column>
 		
 		<p:column headerText="Opções">
-		   <p:commandButton icon="ui-icon-trash" actionListener="#{agendaBean.delete}">
+		   <p:commandButton icon="ui-icon-trash" actionListener="#{agendaBean.delete}"
+		       update=":status :formTable:table">
 		       <p:confirm header="Excluir Contato" message="Tem certeza que deseja excluir?" icon="ui-icon-alert" />
 		       <f:attribute name="selected" value="#{column}"/>
 		   </p:commandButton>

@@ -1,5 +1,6 @@
 package br.com.leo.agenda.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -14,9 +15,10 @@ import br.com.leo.agenda.entity.Contato;
 
 @ViewScoped
 @ManagedBean(name="agendaBean")
-public class AgendaBean {
-
-    private Contato contato;
+public class AgendaBean implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
+	private Contato contato;
     private List<Contato> contatos;
 
     @PostConstruct
@@ -40,6 +42,12 @@ public class AgendaBean {
     
     public void delete(ActionEvent e){
     	contato = (Contato) e.getComponent().getAttributes().get("selected");
+    	if(new ContadoDAO().delete(contato.getId())){
+    		Messages.addGlobalInfo("Contato removido com sucesso!");
+    	}else{
+    		Messages.addGlobalError("Erro ao remover contato!");
+    	}
+    	init();
     }
     
     
