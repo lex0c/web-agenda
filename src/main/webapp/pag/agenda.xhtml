@@ -42,7 +42,7 @@
 		<p:column headerText="Opções">
 		   <p:commandButton icon="ui-icon-trash" actionListener="#{agendaBean.delete}"
 		       update=":status :formTable:table">
-		       <p:confirm header="Excluir Contato" icon="ui-icon-alert" message="Tem certeza que deseja excluir?" />
+		       <p:confirm header="Excluir Contato" icon="ui-icon-alert" message="Excluir contato '#{column.nome}'?" />
 		       <f:attribute name="selected" value="#{column}"/>
 		   </p:commandButton>
 		   <p:commandButton icon="ui-icon-pencil" actionListener="#{agendaBean.getLine}" 

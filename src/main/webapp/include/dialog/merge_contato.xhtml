@@ -18,16 +18,22 @@
 				<h:panelGrid id="gridMerge" columns="2">	
 					
 					<h:outputLabel value="Nome:" for="nome"/>
-					<h:inputText id="nome" value="#{agendaBean.contato.nome}" maxlength="100" size="30" />	
+					<h:inputText id="nome" value="#{agendaBean.contato.nome}" 
+					    maxlength="100" size="30" 
+					    required="true" requiredMessage="Campo 'Nome é obrigatório'!"/>	
 		
 					<h:outputLabel value="Telefone:" for="telefone"/>
-					<h:inputText id="telefone" value="#{agendaBean.contato.telefone}" maxlength="13" size="30" />
+					<h:inputText id="telefone" value="#{agendaBean.contato.telefone}" 
+					    maxlength="13" size="30" 
+					    required="true" requiredMessage="Campo 'Telefone' é obrigatório!"/>
 					
 					<h:outputLabel value="Email:" for="email"/>
-					<h:inputText id="email" value="#{agendaBean.contato.email}" maxlength="100" size="30" />
+					<h:inputText id="email" value="#{agendaBean.contato.email}" 
+					    maxlength="100" size="30" />
 					
 					<h:outputLabel value="Senha Wifi:" for="wifi"/>
-					<h:inputText id="wifi" value="#{agendaBean.contato.senhaWifi}" maxlength="16" size="30" />
+					<h:inputText id="wifi" value="#{agendaBean.contato.senhaWifi}" 
+					    maxlength="16" size="30" />
 					
 				</h:panelGrid>
 				<h:panelGrid columns="2">
