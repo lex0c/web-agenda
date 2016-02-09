@@ -29,17 +29,17 @@
 		<p:column headerText="Nome" sortBy="#{column.nome}" filterBy="#{column.nome}">
 		    <h:outputLabel value="#{column.nome}"/>
 		</p:column>
-		<p:column headerText="Telefone" filterBy="#{column.telefone}">
+		<p:column headerText="Telefone" style="width:150px" filterBy="#{column.telefone}">
 		    <h:outputLabel value="#{column.telefone}"/>
 		</p:column>
 		<p:column headerText="Email" filterBy="#{column.email}">
 		    <h:outputLabel value="#{column.email}"/>
 	    </p:column>
-		<p:column headerText="Senha Wifi" filterBy="#{column.senhaWifi}">
+		<p:column headerText="Senha Wifi" style="width:150px" filterBy="#{column.senhaWifi}">
 		    <h:outputLabel value="#{column.senhaWifi}"/>
 		</p:column>
 		
-		<p:column headerText="Opções">
+		<p:column headerText="Opções" style="width:60px">
 		   <p:commandButton icon="ui-icon-trash" actionListener="#{agendaBean.delete}"
 		       update=":status :formTable:table">
 		       <p:confirm header="Excluir Contato" icon="ui-icon-alert" message="Excluir contato '#{column.nome}'?" />
